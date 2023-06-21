@@ -5,6 +5,17 @@ function App() {
   const [selectedColor, setSelectedColor] = useState("green");
   const colors = ["red", "green", "blue"];
 
+  const Circle = ({ color }) => {
+    return (
+      <div
+        className={`circle ${color} ${
+          selectedColor === color ? "selected" : ""
+        }`}
+        onClick={() => setSelectedColor(color)}
+      ></div>
+    );
+  };
+
   return (
     <>
       <h1>
@@ -12,12 +23,7 @@ function App() {
       </h1>
       <div className="circle-container">
         {colors.map((color) => (
-          <div
-            className={`circle ${color} ${
-              selectedColor === color ? "selected" : ""
-            }`}
-            onClick={() => setSelectedColor(color)}
-          ></div>
+          <Circle key={color} color={color} />
         ))}
       </div>
     </>
